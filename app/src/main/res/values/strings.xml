@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">CurrencyConversion</string>
+    <string name="title_currency_convertor">Currency convertor</string>
+    <string name="subtitle_currency_convertor">Check live rates, set rate alerts, receive notifications and more</string>
+    <string name="btn_clear">Clear</string>
+    <string name="subtitle_rate_value">1 %1$s = %2$.2f %3$s</string>
+    <string name="title_rate">Indicative Exchange Rate</string>
+    <string name="title_converted_amount">Converted Amount</string>
+    <string name="title_amount">Amount</string>
+    <string name="hint_type_a_value">Type a value</string>
+
+<!-- Spinner labels -->
+    <string name="label_brazil">BRL</string>
+    <string name="label_united_state">USD</string>
+    <string name="label_indian">INR</string>
+    <string name="label_canadian">CAD</string>
+    <string name="label_australian">AUD</string>
+    <string name="label_japan">JPY</string>
+    <string name="label_united_kingdom">GBP</string>
+    <string name="label_european_union">EUR</string>
+    <string name="label_argentine">ARS</string>
+    <string name="label_uruguay">UYU</string>
 </resources>

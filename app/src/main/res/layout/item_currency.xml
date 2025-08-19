@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="4dp"
+    android:layout_margin="4dp"
+    android:gravity="center_vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_flag"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        tools:src="@drawable/ic_brazil_flag" />
+
+    <TextView
+        android:id="@+id/tv_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="SGD"
+        android:maxLength="3"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+
+</LinearLayout>
