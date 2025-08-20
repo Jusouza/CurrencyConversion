@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         clearFields()
 
         updateRateIndicative()
-
     }
 
     private fun adapterSpinnerListItems() {
@@ -80,13 +79,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeInputs() {
-        // 1) Quando DIGITAR no campo de origem -> converte em tempo real
         binding.edtAmount.doOnTextChanged { text, _, _, _ ->
             if (isUpdating) return@doOnTextChanged
             convertAndShow(text?.toString().orEmpty())
         }
 
-        // 2) Quando TROCAR moeda em qualquer spinner -> recalcula
         val spinnerListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                 convertAndShow(binding.edtAmount.text?.toString().orEmpty())
@@ -100,8 +97,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun convertAndShow(raw: String) {
-        val from = getSelectedCode(binding.spAmount)          // ex.: "USD"
-        val to   = getSelectedCode(binding.spAmountConverted) // ex.: "BRL"
+        val from = getSelectedCode(binding.spAmount)
+        val to   = getSelectedCode(binding.spAmountConverted)
 
         if (raw.isBlank()) {
             isUpdating = true
@@ -114,7 +111,6 @@ class MainActivity : AppCompatActivity() {
         val result = ExchangeRates.convert(amount, from, to)
 
         if (!result.isNaN()) {
-            // casas decimais por moeda (ex.: JPY = 0 casas). Ajuste se você tiver esse map.
             val decimals = when (to) {
                 "JPY" -> 0
                 else  -> 2
@@ -132,17 +128,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Resolve o item selecionado do Spinner para o CÓDIGO textual (ex.: "USD")
     private fun getSelectedCode(spinner: Spinner): String {
         val ctx = spinner.context
         val item = spinner.selectedItem
         return when (item) {
-            is CurrencyItem -> ctx.getString(item.code) // seu data class com @StringRes
+            is CurrencyItem -> ctx.getString(item.code)
             is Map<*, *>    -> {
                 val v = item["code"]
                 if (v is Int) ctx.getString(v) else v.toString()
             }
-            is Int          -> ctx.getString(item) // caso venha direto um @StringRes
+            is Int          -> ctx.getString(item)
             is String       -> item
             else            -> item.toString()
         }
